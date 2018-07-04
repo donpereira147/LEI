@@ -1,0 +1,48 @@
+/*!
+ * Start Bootstrap - Full Width Pics (https://startbootstrap.com/template-overviews/full-width-pics)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full-width-pics/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+textarea {
+    padding:8px;
+	width:100%;
+	margin:8px 0;
+	box-sizing:border-box;
+	border:2px solid #338caf;
+	resize: none;
+    outline:none;
+}
+
+textarea.snomed {
+	padding:8px;
+	width:100%;
+	margin:8px 0;
+	box-sizing:border-box;
+	border:2px dotted #338caf;
+	text-align: center;
+	resize: none;
+    outline:none;
+}
+
+
+
+

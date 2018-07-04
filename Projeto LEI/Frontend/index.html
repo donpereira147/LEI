@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Relatório Médico">
+    <meta name="author" content="Bruno Pereira e Maria Ana de Brito">
+
+    <title>Relatório Médico</title>
+    <link rel="stylesheet" type="text/css" href="./wick.css" />
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/full-width-pics.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Formulário de Relatório Médico</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#snomed">SNOMED</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#anatomia">Anatomia Patológica</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#relatorio">Relatório Médico</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="file:///C:/Users/Maria%20Ana/Downloads/template_bootstrap/relatorio_medico.html">Página Antiga</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header - set the background image for the header in the line below -->
+    <header class="py-5 bg-image-full" style="background-image: url('./img1.jpg');">
+      <img class="rounded-circle d-block mx-auto" src=".\logo.png" alt="">
+    </header>
+
+    <!-- Content section -->
+    <section class="py-5" id="snomed">
+      <div class="container">
+        <h1>Porquê utilizar SNOMED?</h1>
+        <p class="lead">SNOMED CT a mais completa nomenclatura sistematizada de termos clínicos de medicina, internacional e multilingue, sendo a língua oficial o Inglês. Atualmente é utilizado por mais de 50 países. O SNOMED CT é desenvolvido de forma colaborativa para garantir o acolhimento das diversas necessidades e expectativas dos médicos em todo o mundo e é aceite como uma língua global comum para os termos de saúde. Os pacientes e profissionais de saúde beneficiam de melhores registos de saúde, decisões clínicas e análise, conduzindo a uma maior qualidade, consistência e segurança na prestação de cuidados de saúde. </p>
+      </div>
+    </section>
+
+    <!-- Image Section - set the background image for the header in the line below -->
+    <section class="py-5 bg-image-full" style="background-image: url('./img2.jpg');">
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
+    </section>
+
+    <!-- Content section -->
+    <section class="py-5" id="anatomia">
+      <div class="container">
+        <h1>O que é a Anatomia Patológica?</h1>
+        <p class="lead">Área que inclui Histopatologia, Citopatologia e Autópsias Clínicas</p>
+        <p>A Anatomia Patológica é uma especialidade médica laboratorial, cujo objetivo é o diagnóstico das doenças através do estudo de material biológico obtido a partir de órgãos ou tecidos e que pode ser constituído por células ou fluidos.
+		Esse material pode ser obtido através de biópsias, peças cirúrgicas, exames citológicos, citologia aspirativa ou exames extemporâneos. É, portanto, uma especialidade que exerce a sua atividade em colaboração próxima com a maioria das especialidades médicas e cirúrgicas, oferecendo um importante contributo para as suas decisões terapêuticas e, numa segunda fase, na monitorização dos resultados do tratamento instituído.</p>
+      </div>
+    </section>
+
+    <!-- Image Section - set the background image for the header in the line below -->
+    <section class="py-5 bg-image-full" style="background-image: url('./img3.jpg');">
+      <!-- Put anything you want here! There is just a spacer below for demo purposes! -->
+      <div style="height: 200px;"></div>
+    </section>
+
+    <section class="py-5" id="relatorio">
+    	<div class="container">
+    		<h1>Formulário do Relatório Médico</h1>
+    		<br />
+			<form method="POST" class="my-form"> <!-- Início do form -->
+				<div class="item">
+					<ul>
+						<li>
+							<label for="relCit">Relatório Citológico</label>
+							<input id="relCit" type="radio" onclick="if (this.checked) document.getElementById('relHist').disabled=true; else document.getElementById('relHist').disabled = false;" />
+						</li>
+						<li>
+							<label for="relHist">Relat&oacute;rio Histol&oacute;gico</label>
+							<input id="relHist" type="radio" onclick="if (this.checked) document.getElementById('relCit').disabled=true; else document.getElementById('relCit').disabled = false;"/>
+						</li>
+					</ul>
+				</div>
+				<br />
+				<h4>Informa&ccedil;&atilde;o M&eacute;dica</h4>
+				<textarea id="inforMed" class="wickEnabled" cols="50" rows="2" wrap="virtual"></textarea>
+				<h4>Relatório</h4>
+				<textarea id="rel" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea>
+				<h5>Sugestões de Códigos de SNOMED:</h5>
+				<div class="text-center">
+					<button id="codigos" type="button" class="btn btn-primary btn-info" style="text-align: center;background-color:#338caf;border:2px solid #338caf;" onClick="codigosSNOMED()">Sugerir</button>
+				</div>
+				<textarea readonly id="codigossnomed" class="snomed" wrap="virtual" cols="50" rows="1"></textarea>
+				<h4>Conclusões</h4>
+				<textarea id="conc" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea>
+				<h4>Notas</h4>
+				<textarea id="notas" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea> <br /> <br />
+				<p align="left">
+					<div class="text-center">
+						<button id="prever" type="button" class="btn btn-primary btn-info" style="text-align: center;background-color:#338caf;border:2px solid #338caf;" onClick="previsao()">Prever</button>
+					</div>
+				</p>
+				<br />
+				<div class="text-center">
+					<div class="item">
+						<label for="regOnc">Registo Oncol&oacute;gico</label>
+						<input id="regOnc" type="radio" />
+					</div>
+					<div class="item">
+						<label for="resCrit">Resultado Cr&iacute;tico &nbsp;&nbsp;</label> 
+						<input id="resCrit" type="radio" />
+					</div>
+				</div>
+				<br /><br />
+				<div class="button-sub">
+					<div class="text-center">
+						<button type="button" class="btn btn-primary btn-info" style="text-align: center;background-color:#338caf;border:2px solid #338caf;" onClick="disableSubmissao()">Submeter</button>
+					</div>
+				</div>
+				<p id="demo"></p>
+			</form><!-- ./form -->
+		</div>
+	</section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Laboratório em Engenharia Informática</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<script type="text/javascript" language="JavaScript">
+		function checkForm() {
+		answer = true;
+		if (siw && siw.selectingSomething)
+			answer = false;
+		return answer;
+		}
+	</script>
+
+	<script type="text/javascript" language="JavaScript" src="./frases.js"></script> <!-- WICK STEP 2: DEFINE COLLECTION ARRAY THAT HOLDS DATA -->
+	<script type="text/javascript" language="JavaScript" src="./wick.js"></script> <!-- WICK STEP 3: INSERT WICK LOGIC -->
+
+    <script>
+		function previsao(){
+			var finale;
+		    var text = document.getElementById("inforMed").value;
+		    var rels = document.getElementById("rel").value;
+			var concs = document.getElementById("conc").value;
+			var nots = document.getElementById("notas").value;
+			var relHist = document.getElementById("relHist").checked;
+			var reslCit = document.getElementById("relCit").checked;
+
+			finale ="INFORMED10->";
+			finale = finale.concat(text);
+			finale = finale.concat("###CONCLUS10->");
+			finale = finale.concat(rels);
+			finale = finale.concat("###CONCLUS20->");
+			finale = finale.concat(concs);
+			finale = finale.concat("###NOTAS10->");
+			finale = finale.concat(nots);
+			finale = finale.concat("###CITOLOGICO->");
+			finale = finale.concat(reslCit);
+			finale = finale.concat("###-----\n");
+
+			var xhr = new XMLHttpRequest();
+			//xhr.withCredentials = true;
+
+			xhr.addEventListener("readystatechange", function () {
+			  if (this.readyState === 4) {
+			    if(this.responseText == "ff") {document.getElementById("regOnc").checked = false; document.getElementById("resCrit").checked = false;}
+			    else if(this.responseText == "ft") {document.getElementById("regOnc").checked = false; document.getElementById("resCrit").checked = true;}
+			    else if(this.responseText == "tf") {document.getElementById("regOnc").checked = true; document.getElementById("resCrit").checked = false;}
+			    else if(this.responseText == "tt") {document.getElementById("regOnc").checked = true; document.getElementById("resCrit").checked = true;}
+			    alert("Previsão efetuada");
+			  }
+			});
+
+			//xhr.open("POST", "http://25.46.13.163:8080/Teste/pack/webservice");
+			xhr.open("POST", "http://25.46.13.163:8080/Teste/pack/webservice/previsao");
+			xhr.setRequestHeader("content-type", "application/json");
+			xhr.setRequestHeader("cache-control", "no-cache");
+			xhr.setRequestHeader("postman-token", "73c7a4c3-400e-6b41-a669-e5b2370ac3ab");
+			xhr.send(finale);
+		}
+
+		function codigosSNOMED() {
+			var relatorio = document.getElementById("rel").value;
+
+			var xhr = new XMLHttpRequest();
+
+			xhr.addEventListener("readystatechange", function () {
+			  if (this.readyState === 4) {
+			    document.getElementById("codigossnomed").innerHTML = this.responseText;
+			  }
+			});
+
+			xhr.open("POST", "http://25.46.13.163:8080/Teste/pack/webservice/snomed"); 
+			xhr.setRequestHeader("content-type", "application/json");
+			xhr.setRequestHeader("cache-control", "no-cache");
+			xhr.setRequestHeader("postman-token", "73c7a4c3-400e-6b41-a669-e5b2370ac3ab");
+			xhr.send(relatorio);
+
+		}
+
+		function disableSubmissao(){
+			if (document.getElementById("relHist").checked || document.getElementById("relCit").checked) guardaRelatorio();
+			else alert("Necessita especificar o tipo de relatório!");
+		}
+		function guardaRelatorio(){
+
+			var finale;
+		    var text = document.getElementById("inforMed").value;
+		    var rels = document.getElementById("rel").value;
+			var concs = document.getElementById("conc").value;
+			var nots = document.getElementById("notas").value;
+			var relHist = document.getElementById("relHist").checked;
+			var reslCit = document.getElementById("relCit").checked;
+			var regsOnc = document.getElementById("regOnc").checked;
+			var ressCrit = document.getElementById("resCrit").checked;
+
+			finale ="REGONCO->";
+			finale = finale.concat(regsOnc);
+			finale = finale.concat("###RESULCRIT->");
+			finale = finale.concat(ressCrit);
+			finale = finale.concat("###INFORMED10->");
+			finale = finale.concat(text);
+			finale = finale.concat("###CONCLUS10->");
+			finale = finale.concat(rels);
+			finale = finale.concat("###CONCLUS20->");
+			finale = finale.concat(concs);
+			finale = finale.concat("###NOTAS10->");
+			finale = finale.concat(nots);
+			finale = finale.concat("###CITOLOGICO->");
+			finale = finale.concat(reslCit);
+			finale = finale.concat("###-----\n");
+			
+
+			var xhr = new XMLHttpRequest();
+			//xhr.withCredentials = true;
+
+			xhr.addEventListener("readystatechange", function () {
+			  if (this.readyState === 4) {
+			    if(this.responseText == "funcionou e bem") alert("Relatório foi corretamente submetido");
+			    else alert("Relatório não foi corretamente submetido");
+			  }
+			});
+
+			//xhr.open("POST", "http://25.46.13.163:8080/Teste/pack/webservice");
+			xhr.open("POST", "http://25.46.13.163:8080/Teste/pack/webservice");
+			xhr.setRequestHeader("content-type", "application/json");
+			xhr.setRequestHeader("cache-control", "no-cache");
+			xhr.setRequestHeader("postman-token", "73c7a4c3-400e-6b41-a669-e5b2370ac3ab");
+			xhr.send(finale);
+		}
+	</script>
+
+  </body>
+
+</html>

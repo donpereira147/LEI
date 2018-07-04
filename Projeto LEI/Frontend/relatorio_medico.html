@@ -1,0 +1,175 @@
+<html>
+<head>
+	<title>Relat&oacute;rio M&eacute;dico</title>
+	<link rel="stylesheet" type="text/css" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="./wick.css" />
+	<meta charset="UTF-8">
+</head>
+<body>
+	<header id="main-header">
+		<div class="my-container">
+			<h1>Relatório Médico</h1>
+		</div>
+	</header>
+	<nav id="navbar">
+		<div class="my-container">
+			<h1></h1>
+		</div>
+	</nav>
+	<section id="showcase">
+		<div class="my-container">
+			<h1>Formulário de relatórios de Anatomia Patológica</h1>
+		</div>
+	</section>
+	<script type="text/javascript" language="JavaScript">
+		function checkForm() {
+		answer = true;
+		if (siw && siw.selectingSomething)
+			answer = false;
+		return answer;
+		}
+	</script>
+<p>
+<div class="container">
+<form method="POST" class="my-form"> <!-- Início do form -->
+	<div class="item">
+		<ul>
+		<li><label for="relCit">Relatório Citológico</label>
+		<input id="relCit" type="checkbox" onclick="if (this.checked) document.getElementById('relHist').disabled=true; else document.getElementById('relHist').disabled = false;" /></li>
+		<li><label for="relHist">Relat&oacute;rio Histol&oacute;gico</label>
+		<input id="relHist" type="checkbox" onclick="if (this.checked) document.getElementById('relCit').disabled=true; else document.getElementById('relCit').disabled = false;"/></li>
+		</ul>
+	</div>
+	<br /><br /><br /><br /><br />
+		<p>Informa&ccedil;&atilde;o M&eacute;dica</p>
+		<textarea id="inforMed" class="wickEnabled" cols="50" rows="2" wrap="virtual"></textarea>
+		<p>Relatório</p>
+		<textarea id="rel" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea>
+		<p>Conclus&otilde;es</p>
+		<textarea id="conc" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea>
+		<p>Notas</p>
+		<textarea id="notas" class="wickEnabled" wrap="virtual" cols="50" rows="2"></textarea> <br /> <br />
+		<p align="left">
+			<button id="prever" type="button" onClick="previsao()">Prever</button>
+		</p>
+		<div class="item">
+			<label for="regOnc">Registo Oncol&oacute;gico</label>
+			<input id="regOnc" type="checkbox" />
+		</div>
+		<div class="item">
+			<label for="resCrit">Resultado Cr&iacute;tico &nbsp;&nbsp;</label> 
+			<input id="resCrit" type="checkbox" />
+		</div>
+
+	<br /><br /><br />
+	<div class="button-sub">
+		<button type="button" onClick="disableSubmissao()">Submeter</button>
+	
+	</div>
+	<p id="demo"></p>
+</form><!-- ./form -->
+</div>
+</p>
+</center>
+<script type="text/javascript" language="JavaScript" src="./frases.js"></script> <!-- WICK STEP 2: DEFINE COLLECTION ARRAY THAT HOLDS DATA -->
+<script type="text/javascript" language="JavaScript" src="./wick.js"></script> <!-- WICK STEP 3: INSERT WICK LOGIC -->
+<script>
+function previsao(){
+	var finale;
+    var text = document.getElementById("inforMed").value;
+    var rels = document.getElementById("rel").value;
+	var concs = document.getElementById("conc").value;
+	var nots = document.getElementById("notas").value;
+	var relHist = document.getElementById("relHist").checked;
+	var reslCit = document.getElementById("relCit").checked;
+
+	finale ="INFORMED10->";
+	finale = finale.concat(text);
+	finale = finale.concat("###CONCLUS10->");
+	finale = finale.concat(rels);
+	finale = finale.concat("###CONCLUS20->");
+	finale = finale.concat(concs);
+	finale = finale.concat("###NOTAS10->");
+	finale = finale.concat(nots);
+	finale = finale.concat("###CITOLOGICO->");
+	finale = finale.concat(reslCit);
+	finale = finale.concat("###-----\n");
+
+	var xhr = new XMLHttpRequest();
+	//xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    if(this.responseText == "ff") {document.getElementById("regOnc").checked = false; document.getElementById("resCrit").checked = false;}
+	    else if(this.responseText == "ft") {document.getElementById("regOnc").checked = false; document.getElementById("resCrit").checked = true;}
+	    else if(this.responseText == "tf") {document.getElementById("regOnc").checked = true; document.getElementById("resCrit").checked = false;}
+	    else if(this.responseText == "tt") {document.getElementById("regOnc").checked = true; document.getElementById("resCrit").checked = true;}
+	  }
+	});
+
+	//xhr.open("POST", "http://localhost:8080/Teste/pack/webservice");
+	xhr.open("POST", "http://localhost:8080/Teste/pack/webservice/previsao");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	xhr.setRequestHeader("postman-token", "73c7a4c3-400e-6b41-a669-e5b2370ac3ab");
+	xhr.send(finale);
+}
+
+function disableSubmissao(){
+	if (document.getElementById("relHist").checked || document.getElementById("relCit").checked) guardaRelatorio();
+	else alert("Necessita especificar o tipo de relatório!");
+}
+function guardaRelatorio(){
+
+	var finale;
+    var text = document.getElementById("inforMed").value;
+    var rels = document.getElementById("rel").value;
+	var concs = document.getElementById("conc").value;
+	var nots = document.getElementById("notas").value;
+	var relHist = document.getElementById("relHist").checked;
+	var reslCit = document.getElementById("relCit").checked;
+	var regsOnc = document.getElementById("regOnc").checked;
+	var ressCrit = document.getElementById("resCrit").checked;
+
+	finale ="REGONCO->";
+	finale = finale.concat(regsOnc);
+	finale = finale.concat("###RESULCRIT->");
+	finale = finale.concat(ressCrit);
+	finale = finale.concat("###INFORMED10->");
+	finale = finale.concat(text);
+	finale = finale.concat("###CONCLUS10->");
+	finale = finale.concat(rels);
+	finale = finale.concat("###CONCLUS20->");
+	finale = finale.concat(concs);
+	finale = finale.concat("###NOTAS10->");
+	finale = finale.concat(nots);
+	finale = finale.concat("###CITOLOGICO->");
+	finale = finale.concat(reslCit);
+	finale = finale.concat("###-----\n");
+	console.log(finale);
+
+	var xhr = new XMLHttpRequest();
+	//xhr.withCredentials = true;
+
+	xhr.addEventListener("readystatechange", function () {
+	  if (this.readyState === 4) {
+	    if(this.responseText == "funcionou e bem") alert("Relatório foi corretamente submetido");
+	    else alert("Relatório não foi corretamente submetido");
+	  }
+	});
+
+	//xhr.open("POST", "http://localhost:8080/Teste/pack/webservice");
+	xhr.open("POST", "http://localhost:8080/Teste/pack/webservice");
+	xhr.setRequestHeader("content-type", "application/json");
+	xhr.setRequestHeader("cache-control", "no-cache");
+	xhr.setRequestHeader("postman-token", "73c7a4c3-400e-6b41-a669-e5b2370ac3ab");
+	xhr.send(finale);
+
+
+}
+</script>
+<footer id="main-footer">
+		<p> Laboratório em Engenharia Informática </p>
+	</footer>
+</body>
+</html>

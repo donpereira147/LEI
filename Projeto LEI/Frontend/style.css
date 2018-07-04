@@ -1,0 +1,172 @@
+body{
+	background-color: #f4f4f4f4;
+	color:#555;
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+
+	line-height: 1.2em;
+	margin:0;
+}
+
+button{
+	background-color:#333;
+	color:#fff;
+	padding: 10px 15px;
+	border:0.1em solid;
+	border-radius:0.12em;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 500;
+	text-align: center;
+	border-color: #333;	
+}
+
+button:hover{
+	background: coral;
+	border-color: coral;
+	color:#fff;
+}
+
+.button-sub{
+	padding-top: 50px;
+	text-align: right;
+}
+
+.my-container{
+	width: 80%;
+	margin:auto;
+	overflow: hidden;
+}
+
+.container{
+	width: 50%;
+	margin:auto;
+	overflow: hidden;
+}
+
+.item{
+	background-color: #686868;
+	color: #fff;
+	padding:  10px 17px;
+	float:left;
+}
+
+.item ul{
+	padding:0;
+	list-style: none;
+}
+
+.item li{
+	display:inline;
+}
+
+.item label{
+	font-family: Arial Helvetica sans-serif;
+	font-weight: 800;
+	font-style: italic;
+	text-decoration: none;
+	text-transform: uppercase;
+	word-spacing: 0.3em;
+	padding-right: 2px;
+	padding-left: 5px;
+}
+
+.my-form{
+	padding:20px;
+}
+
+.my-form textarea{
+	padding:8px;
+	width:100%;
+	margin:8px 0;
+	box-sizing:border-box;
+	border:2px solid coral;
+	resize: none;
+}
+
+.my-form textarea:hover{
+	color:#333;
+}
+
+.my-form p{
+	text-align:left;
+	font-family: Tahoma;
+}
+
+#main-header{
+	background-color: coral;
+	color:#fff;
+	padding: 1.2px;
+	text-align: center;
+}
+
+#navbar{
+	background-color: #333;
+	color:#fff;
+	height:8px;
+}
+
+#showcase{
+	background-image: url("./showcase.jpg");
+	background-position: center right;
+	min-height:260px;
+	text-align: center;
+}
+
+#showcase h1{
+	color:#686868;
+	font-size:34px;
+	line-height: 1.6em;
+	padding-top: 50px;
+}
+
+#main-footer{
+	background: #333;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	margin-top: 40px;
+}
+
+
+
+//WICK
+.floater {
+position:absolute;
+z-index:2;
+bottom:0;
+right:0;
+display:none;
+padding:0;
+}
+
+.floater td {
+font-family: Gill, Helvetica, sans-serif;
+background-color:white;
+border:1px inset #979797;
+color:black;
+}
+
+.matchedSmartInputItem {
+font-size:0.8em;
+padding: 5px 10px 1px 5px;
+margin:0;
+cursor:pointer;
+}
+
+.selectedSmartInputItem {
+color:white;
+background-color:#3875D7;
+}
+
+#smartInputResults {
+padding:0;margin:0;
+}
+
+.siwCredit {
+margin:0;padding:0;margin-top:10px;font-size:0.7em;color:black;
+}
+
+
